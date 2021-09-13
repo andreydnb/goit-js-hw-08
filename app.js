@@ -97,7 +97,6 @@ function createCardsMarkup(items) {
         )
         .join('');
 }
-console.log(refs.galleryUl)
 
 refs.galleryUl.addEventListener('click', onGalleryItemClick)
 
@@ -106,8 +105,27 @@ function onGalleryItemClick(evt) {
   if (!activeGalleryItem) {
     return
   }
-  refs.modalLightbox.classList.add("is-open")
-  
+  evt.preventDefault();
+
+    refs.modalLightbox.classList.add('is-open');
+    refs.imageLightbox.src = evt.target.dataset.source;
+    refs.imageLightbox.alt = evt.target.alt;
+
 }
 
+refs.overlayLightbox.addEventListener('click', modalClose);
+refs.closeLightbox.addEventListener('click', modalClose);
+
+function modalClose(evt) {
+    refs.modalLightbox.classList.remove('is-open');
+    refs.imageLightbox.src = "";
+    refs.imageLightbox.alt = "";
+
+}
+
+window.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        modalClose();
+    }
+});
 
