@@ -106,8 +106,8 @@ function onGalleryItemClick(evt) {
   if (!activeGalleryItem) {
     return
   }
-  refs.imageLightbox.src = evt.target.dataset.source
-  refs.imageLightbox.src = evt.target.alt
+  refs.modalLightbox.classList.add("is-open")
+  
 }
 
 
