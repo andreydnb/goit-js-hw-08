@@ -107,9 +107,9 @@ function onGalleryItemClick(evt) {
   }
   evt.preventDefault();
 
-    refs.modalLightbox.classList.add('is-open');
-    refs.imageLightbox.src = evt.target.dataset.source;
-    refs.imageLightbox.alt = evt.target.alt;
+  refs.modalLightbox.classList.add('is-open');
+  setImageLightbox(evt.target.dataset.source, evt.target.alt )
+    
 
 }
 
@@ -118,8 +118,8 @@ refs.closeLightbox.addEventListener('click', modalClose);
 
 function modalClose(evt) {
     refs.modalLightbox.classList.remove('is-open');
-    refs.imageLightbox.src = "";
-    refs.imageLightbox.alt = "";
+      setImageLightbox("", "")
+
 
 }
 
@@ -129,3 +129,7 @@ window.addEventListener('keydown', (evt) => {
     }
 });
 
+function setImageLightbox(src, alt) {
+  refs.imageLightbox.src = src
+    refs.imageLightbox.alt = alt;
+}
